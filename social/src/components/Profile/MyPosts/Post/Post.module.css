@@ -1,0 +1,19 @@
+.Post {
+    display: flex;
+}
+
+.Post img {
+    height: 70px;
+    border-radius: 40px;
+}
+
+.Post > div:first-child {
+    margin-right: 20px;
+}
+
+
+.Post > div:last-child {
+    margin-left: auto;
+    align-self: flex-end;
+}
+

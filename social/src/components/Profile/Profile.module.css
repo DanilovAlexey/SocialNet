@@ -1,0 +1,13 @@
+.content {
+  grid-area: content;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.content > div:nth-child(n+2) {
+  padding-right: 20%;
+}
+
+.content > div > img {
+  height: 180px;
+  width: 100%;
+}

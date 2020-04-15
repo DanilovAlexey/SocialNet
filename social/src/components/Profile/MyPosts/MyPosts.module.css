@@ -1,0 +1,20 @@
+.myPosts {
+    display: block;
+    width: 90%;
+}
+
+.myPosts label {
+    display: block;
+}
+
+.myPosts textarea {
+    display: block;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.myPosts button {
+    float: right;
+}

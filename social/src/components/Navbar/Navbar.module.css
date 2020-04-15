@@ -1,0 +1,14 @@
+
+.nav {
+  grid-area: nav;
+  background-color: darksalmon;
+}
+
+.nav > ul {
+  list-style-type: none;
+}
+
+.nav > ul a {
+  color: white;
+  text-decoration: none;
+}

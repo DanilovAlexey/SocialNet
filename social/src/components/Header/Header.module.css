@@ -1,0 +1,18 @@
+.header {
+  grid-area: header;
+  /* grid-template-columns: repeat(3, 1fr); */
+   grid-template-columns: 1fr 4fr 1fr; 
+   display: grid;
+   background-color: darkolivegreen;
+  
+  /* display: flex; */
+}
+
+.header img {
+  height: 60px;
+}
+
+header > div:nth-child(3) {
+  /*margin-left: auto;*/
+  grid-column: 3;
+}

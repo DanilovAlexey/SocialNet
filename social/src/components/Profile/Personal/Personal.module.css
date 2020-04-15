@@ -1,0 +1,10 @@
+.personal {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+}
+
+
+.personal img {
+  height: 170px;
+  width: 170px;
+}
