@@ -2,12 +2,14 @@ import React from 'react'
 import PostForm from './PostForm/PostForm'
 import Post from './Post/Post'
 
-const MyPosts = () => {
+
+
+const MyPosts = ({ postsData }) => {
   return (
     <React.Fragment>
       <PostForm />
-      <Post message='Hi, how are you?' likes="15" />
-      <Post message='Its my first post' likes="20" />
+
+      {postsData.map((item, index) => (<Post key={index} message={item.message} likesCount={item.likesCount} />))}
     </React.Fragment>
   )
 }

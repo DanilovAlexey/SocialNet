@@ -6,9 +6,14 @@
 
 .nav > ul {
   list-style-type: none;
+  padding-left: 20px;
 }
 
 .nav > ul a {
   color: white;
   text-decoration: none;
+}
+
+.nav > ul a.active {
+  color: gold;
 }

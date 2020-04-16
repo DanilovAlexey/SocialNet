@@ -1,0 +1,21 @@
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems a {
+    color: black;
+    text-decoration: none;
+}
+
+.dialogsItems a:hover {
+    color: blue;
+}
+
+.item {
+    padding: 10px
+}
+
+.message {
+    padding: 10px
+}
