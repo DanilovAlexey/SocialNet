@@ -20,6 +20,30 @@ let state = {
             { name: "John", id: "4" },
             { name: "Kevin", id: "5" }
         ]
+    },
+    sideBar: {
+        links: [
+            {
+                to: "profile",
+                text: "Profile"
+            },
+            {
+                to: "dialogs",
+                text: "Dialogs"
+            },
+            {
+                to: "news",
+                text: "News"
+            },
+            {
+                to: "music",
+                text: "Music"
+            },
+            {
+                to: "settings",
+                text: "Settings"
+            }],
+        friends: ["Andrey", "Boris", "Stifler", "John", "Kevin"]
     }
 }
 

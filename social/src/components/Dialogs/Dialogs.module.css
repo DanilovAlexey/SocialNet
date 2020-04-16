@@ -1,7 +1,11 @@
 .dialogs {
     display: grid;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 4fr 6fr;
     padding: 10px;
+}
+
+.dialogsItems {
+    padding: 0px 10px 10px 10px;
 }
 
 .dialogsItems a {
@@ -14,9 +18,19 @@
 }
 
 .item {
+    margin: 10px 0px 10px 0px;
     display: flex;
     padding: 10px;
     align-items: center;
+    border: 2px solid #eee;
+    border-radius: 5px;
+}
+
+.item:hover {
+    background-color: lightblue;
+    border: 2px solid #eee;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    cursor: pointer;
 }
 
 .item img {
@@ -32,13 +46,23 @@
 
 .messages {
     padding: 10px;
+    background-color: #f3f3f3;
 }
 
 .message {
     padding: 10px;
     text-align: left;
+    margin: 10px 5px 10px 5px;
 }
 
 .message.right {
     text-align: end;
+}
+
+.message > div {
+    display: inline-block;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px 20px 10px 20px;
+    
 }

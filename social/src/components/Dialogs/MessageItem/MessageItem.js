@@ -8,10 +8,12 @@ export default props => {
     if (props.direction === 'from') {
         cls.push(classes.right)
     }
-
+                                         
     return (
         <div className={cls.join(' ')}>
-            {props.message}
+            <div>
+                <span>{props.message}</span>
+            </div>
         </div>
     )
 }

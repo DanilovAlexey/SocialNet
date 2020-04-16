@@ -1,19 +1,17 @@
 import React from 'react'
 import classes from './Navbar.module.css'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import Friends from './Friends/Friends'
 
-const Navbar = () => {
-    return (
-        <nav className={classes.nav}>
-        <ul>
-          <li><NavLink to="/profile"  activeClassName={classes.active}>Profile</NavLink></li>
-          <li><NavLink to="/dialogs" activeClassName={classes.active}>Dialogs</NavLink></li>
-          <li><NavLink to="/news" activeClassName={classes.active}>News</NavLink></li>
-          <li><NavLink to="/music" activeClassName={classes.active}>Music</NavLink></li>
-          <li><NavLink to="/settings" activeClassName={classes.active}>Settings</NavLink></li>
-        </ul>
-      </nav>
-    )
+const Navbar = ({ state }) => {
+  return (
+    <nav className={classes.nav}>
+      <ul>
+        {state.links.map((link, index) => (<li key={index}><NavLink to={`/${link.to}`} activeClassName={classes.active}>{link.text}</NavLink></li>))}
+      </ul>
+      <Friends friends={state.friends} />
+    </nav>
+  )
 }
 
 export default Navbar
