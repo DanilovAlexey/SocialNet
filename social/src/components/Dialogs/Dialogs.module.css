@@ -66,3 +66,9 @@
     padding: 10px 20px 10px 20px;
     
 }
+
+.messageForm {
+    grid-column-start: 1;
+    grid-column-end: 5;
+    display: inline-grid;
+}

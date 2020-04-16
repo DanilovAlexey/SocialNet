@@ -16,5 +16,6 @@
 .friend {
     color: white;
     padding-right: 10px;
+    padding-bottom: 10px;
     display: inline-grid;
 }

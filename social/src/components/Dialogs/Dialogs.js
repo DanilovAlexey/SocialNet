@@ -4,7 +4,7 @@ import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
 
 
-export default ({state}) => {
+export default ({ state }) => {
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
@@ -12,6 +12,13 @@ export default ({state}) => {
             </div>
             <div className={classes.messages}>
                 {state.messagesData.map((item, index) => (<MessageItem message={item.message} id={item.id} key={index} direction={item.direction} />))}
+            </div>
+            <div className={classes.messageForm}>
+                <label htmlFor="myPost">My Post</label>
+                <textarea id="myPost" rows="5" placeholder="print here..."></textarea>
+                <div>
+                    <button>Send</button>
+                </div>
             </div>
         </div>
     )
