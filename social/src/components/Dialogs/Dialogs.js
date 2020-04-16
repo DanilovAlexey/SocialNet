@@ -4,32 +4,14 @@ import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
 
 
-let dialogsData = [
-    { name: "Andrey", id: "1" },
-    { name: "Boris", id: "2" },
-    { name: "Stifler", id: "3" },
-    { name: "John", id: "4" },
-    { name: "Kevin", id: "5" }
-]
-
-let messagesData = [
-    { message: "Hi", id: "1" },
-    { message: "How're you?", id: "2" },
-    { message: "Bye!", id: "3" },
-    { message: "Yo", id: "4" },
-    { message: "Rock", id: "5" }
-]
-
-
-
-export default (props) => {
+export default ({state}) => {
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                {dialogsData.map((item, index) => (<DialogItem name={item.name} id={item.id} key={index} />))}
+                {state.dialogsData.map((item, index) => (<DialogItem name={item.name} id={item.id} key={index} />))}
             </div>
             <div className={classes.messages}>
-                {messagesData.map((item, index) => (<MessageItem message={item.message} id={item.id} key={index} />))}
+                {state.messagesData.map((item, index) => (<MessageItem message={item.message} id={item.id} key={index} direction={item.direction} />))}
             </div>
         </div>
     )
