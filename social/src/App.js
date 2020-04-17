@@ -20,7 +20,7 @@ function App(props) {
         <div className="app-wrapper-content">
           {/* <Route path="/profile" component={Profile} /> */}
           {/* <Route path="/dialogs" component={Dialogs} /> */}
-          <Route path="/profile" render={() => <Profile state={props.state.profilePage} addPost={props.addPost} updateNewPost={props.updateNewPost} />} />
+          <Route path="/profile" render={() => <Profile state={props.state.profilePage} store={props.store} />} />
           <Route path="/dialogs" render={() => <Dialogs state={props.state.dialogsPage} />} />
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />

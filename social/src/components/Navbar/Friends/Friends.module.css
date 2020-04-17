@@ -19,3 +19,10 @@
     padding-bottom: 10px;
     display: inline-grid;
 }
+
+.friend span {
+    overflow: hidden;
+    max-width: 60px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

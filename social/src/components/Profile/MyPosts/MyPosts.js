@@ -4,10 +4,10 @@ import Post from './Post/Post'
 
 
 
-const MyPosts = ({ state, addPost, updateNewPost }) => {
+const MyPosts = ({ state, store }) => {
   return (
     <React.Fragment>
-      <PostForm newPostText={state.newPostText} addPost={addPost} updateNewPost={updateNewPost} />
+      <PostForm newPostText={state.newPostText} store={store} />
 
       {state.postsData.map((item, index) => (<Post key={index} message={item.message} likesCount={item.likesCount} />))}
     </React.Fragment>
