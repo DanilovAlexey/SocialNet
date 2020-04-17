@@ -6,7 +6,7 @@
   "footer footer footer";
   grid-template-rows: 60px 1fr 60px;
   grid-template-columns: 2fr 10fr;  
-  grid-gap: 10px;
+  /* grid-gap: 10px; */
 }
 
 
@@ -16,6 +16,8 @@
 }
 
 .app-wrapper-content > div:nth-child(n+2) {
+  padding-top: 10px;
+  padding-left: 10px;
   padding-right: 20%;
 }
 
