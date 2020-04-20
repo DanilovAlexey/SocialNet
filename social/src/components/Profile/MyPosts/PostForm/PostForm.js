@@ -1,17 +1,18 @@
 import React from 'react'
 import classes from './PostForm.module.css'
 
-const PostForm = ({newPostText, store}) => {
+const PostForm = ({newPostText, dispatch}) => {
   let postRefValue = React.createRef()
 
   let onClickHandler = () => {
     postRefValue.current.value = newPostText 
-    store.addPost()    
+    dispatch({type:'ADD-POST'})
   }
   
   let onChangeHandler = () => {
     let text = postRefValue.current.value
-    store.updateNewPost(text)
+    //store.updateNewPost(text)
+    dispatch({type:'UPDATE-NEW-POST-TEXT', newPost: text})
   }
 
   return (

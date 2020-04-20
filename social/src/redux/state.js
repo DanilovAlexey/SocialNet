@@ -48,28 +48,42 @@ const store = {
             friends: ["Andrey", "Boris", "Stifler", "John", "Kevin"]
         }
     },
-    _subscriber() {},
+    _subscriber() { },
     getState() {
         return this._state;
     },
-    addPost() {
+    subscribe(observer) {
+        this._subscriber = observer
+    },
+
+    _addPost() {
         let newPost = {
             id: 5,
             message: this._state.profilePage.newPostText,
             likesCount: 0
         }
-    
+
         this._state.profilePage.postsData.push(newPost)
         this._state.profilePage.newPostText = ''
         this._subscriber(this._state);
     },
-    updateNewPost(newPost) {
+    _updateNewPost(newPost) {
         this._state.profilePage.newPostText = newPost
         this._subscriber(this._state);
-    },        
-    subscribe(observer) {
-        this._subscriber = observer
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST':
+                this._addPost();
+                break;
+            case 'UPDATE-NEW-POST-TEXT':
+                this._updateNewPost(action.newPost);
+                break;
+
+        }
     }
+
 
 }
 

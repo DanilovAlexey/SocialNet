@@ -5,19 +5,18 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/state'
 
-const state = store.getState();
 
 export const reRenderEntireTree = (state) => (
     ReactDOM.render(
       <React.StrictMode>
-        <App state={state} store={store}/>
+        <App state={state} dispatch={store.dispatch.bind(store)}/>
       </React.StrictMode>,
       document.getElementById('root')
     )
   );
 
 
-reRenderEntireTree(state)
+reRenderEntireTree(store.getState());
 store.subscribe(reRenderEntireTree)
 
 
