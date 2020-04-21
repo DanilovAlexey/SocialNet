@@ -25,7 +25,7 @@ function App(props) {
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
-          <Route path="/" render={() => <Profile state={props.state.profilePage} dispatch={props.dispatch} />} />
+          <Route path="/" exact render={() => <Profile state={props.state.profilePage} dispatch={props.dispatch} />} />
         </div>
         <Footer />
       </div>

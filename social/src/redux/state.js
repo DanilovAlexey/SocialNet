@@ -1,3 +1,6 @@
+const ADD_POST = 'ADD-POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+
 const store = {
     _state: {
         profilePage: {
@@ -74,10 +77,10 @@ const store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-POST':
+            case ADD_POST:
                 this._addPost();
                 break;
-            case 'UPDATE-NEW-POST-TEXT':
+            case UPDATE_NEW_POST_TEXT:
                 this._updateNewPost(action.newPost);
                 break;
 
@@ -87,6 +90,10 @@ const store = {
 
 }
 
-//window.state = store.getState();
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+export const updateNewPostActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPost: text})
+
+window.state = store.getState();
 
 export default store

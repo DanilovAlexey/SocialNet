@@ -1,18 +1,20 @@
 import React from 'react'
 import classes from './PostForm.module.css'
+import {addPostActionCreator, updateNewPostActionCreator} from '../../../../redux/state'
 
 const PostForm = ({newPostText, dispatch}) => {
   let postRefValue = React.createRef()
 
   let onClickHandler = () => {
     postRefValue.current.value = newPostText 
-    dispatch({type:'ADD-POST'})
+    dispatch(addPostActionCreator())
   }
   
   let onChangeHandler = () => {
     let text = postRefValue.current.value
     //store.updateNewPost(text)
-    dispatch({type:'UPDATE-NEW-POST-TEXT', newPost: text})
+
+    dispatch(updateNewPostActionCreator(text))
   }
 
   return (

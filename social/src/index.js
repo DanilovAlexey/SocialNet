@@ -7,13 +7,13 @@ import store from './redux/state'
 
 
 export const reRenderEntireTree = (state) => (
-    ReactDOM.render(
-      <React.StrictMode>
-        <App state={state} dispatch={store.dispatch.bind(store)}/>
-      </React.StrictMode>,
-      document.getElementById('root')
-    )
-  );
+  ReactDOM.render(
+    <React.StrictMode>
+      <App state={state} dispatch={store.dispatch.bind(store)} />
+    </React.StrictMode>,
+    document.getElementById('root')
+  )
+);
 
 
 reRenderEntireTree(store.getState());
