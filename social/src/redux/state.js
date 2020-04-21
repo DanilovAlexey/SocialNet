@@ -1,5 +1,7 @@
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+const ADD_POST = 'ADD_POST'
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
+const ADD_NEW_DIALOG_ITEM = 'ADD_NEW_DIALOG_ITEM'
+const UPDATE_NEW_DIALOG_ITEM = 'UPDATE_NEW_DIALOG_ITEM'
 
 const store = {
     _state: {
@@ -24,7 +26,8 @@ const store = {
                 { name: "Stifler", id: "3" },
                 { name: "John", id: "4" },
                 { name: "Kevin", id: "5" }
-            ]
+            ],
+            newPostText: "Print message..."
         },
         sideBar: {
             links: [
@@ -75,6 +78,22 @@ const store = {
         this._subscriber(this._state);
     },
 
+    _addNewDialog() {
+        let newItem = {
+            message: this._state.dialogsPage.newPostText,
+            id: "0",
+            direction: "from"
+        }
+        this._state.dialogsPage.messagesData.push(newItem)
+        this._state.dialogsPage.newPostText = ''
+        this._subscriber(this._state);
+    },
+
+    _updateNewDialogText(newDialogItem) {
+        this._state.dialogsPage.newPostText = newDialogItem
+        this._subscriber(this._state);
+    },
+
     dispatch(action) {
         switch (action.type) {
             case ADD_POST:
@@ -83,6 +102,12 @@ const store = {
             case UPDATE_NEW_POST_TEXT:
                 this._updateNewPost(action.newPost);
                 break;
+            case ADD_NEW_DIALOG_ITEM:
+                this._addNewDialog();
+                break;
+            case UPDATE_NEW_DIALOG_ITEM:
+                this._updateNewDialogText(action.newDialog);
+                break;
 
         }
     }
@@ -90,9 +115,13 @@ const store = {
 
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
+export const addPostActionCreator = () => ({ type: ADD_POST })
 
-export const updateNewPostActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPost: text})
+export const updateNewPostActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newPost: text })
+
+export const addNewDialogActionCreator = () => ({ type: ADD_NEW_DIALOG_ITEM})
+
+export const updateNewDialogActionCreator = (text) => ({ type: UPDATE_NEW_DIALOG_ITEM, newDialog: text })
 
 window.state = store.getState();
 
