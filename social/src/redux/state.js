@@ -1,7 +1,8 @@
-const ADD_POST = 'ADD_POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
-const ADD_NEW_DIALOG_ITEM = 'ADD_NEW_DIALOG_ITEM'
-const UPDATE_NEW_DIALOG_ITEM = 'UPDATE_NEW_DIALOG_ITEM'
+import profileReducer from './profileReducer'
+import dialogReducer from './dialogReducer'
+import sideBarReducer from './sideBarReducer'
+import {ADD_POST, UPDATE_NEW_POST_TEXT, ADD_NEW_DIALOG_ITEM, UPDATE_NEW_DIALOG_ITEM} from './types'
+
 
 const store = {
     _state: {
@@ -62,54 +63,15 @@ const store = {
         this._subscriber = observer
     },
 
-    _addPost() {
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        }
 
-        this._state.profilePage.postsData.push(newPost)
-        this._state.profilePage.newPostText = ''
-        this._subscriber(this._state);
-    },
-    _updateNewPost(newPost) {
-        this._state.profilePage.newPostText = newPost
-        this._subscriber(this._state);
-    },
 
-    _addNewDialog() {
-        let newItem = {
-            message: this._state.dialogsPage.newPostText,
-            id: "0",
-            direction: "from"
-        }
-        this._state.dialogsPage.messagesData.push(newItem)
-        this._state.dialogsPage.newPostText = ''
-        this._subscriber(this._state);
-    },
-
-    _updateNewDialogText(newDialogItem) {
-        this._state.dialogsPage.newPostText = newDialogItem
-        this._subscriber(this._state);
-    },
 
     dispatch(action) {
-        switch (action.type) {
-            case ADD_POST:
-                this._addPost();
-                break;
-            case UPDATE_NEW_POST_TEXT:
-                this._updateNewPost(action.newPost);
-                break;
-            case ADD_NEW_DIALOG_ITEM:
-                this._addNewDialog();
-                break;
-            case UPDATE_NEW_DIALOG_ITEM:
-                this._updateNewDialogText(action.newDialog);
-                break;
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action)
+        this._state.sideBar = sideBarReducer(this._state.sideBar, action)
 
-        }
+        this._subscriber(this._state)
     }
 
 
