@@ -19,3 +19,8 @@ export default (state, action) => {
 
     }
 }
+
+
+export const addNewDialogActionCreator = () => ({ type: ADD_NEW_DIALOG_ITEM})
+
+export const updateNewDialogActionCreator = (text) => ({ type: UPDATE_NEW_DIALOG_ITEM, newDialog: text })

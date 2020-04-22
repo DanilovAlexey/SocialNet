@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
-import {addNewDialogActionCreator, updateNewDialogActionCreator} from '../../redux/state'
+import {addNewDialogActionCreator, updateNewDialogActionCreator} from '../../redux/dialogReducer'
 
 
 export default ({state, dispatch}) => {

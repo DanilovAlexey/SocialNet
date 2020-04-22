@@ -77,14 +77,6 @@ const store = {
 
 }
 
-export const addPostActionCreator = () => ({ type: ADD_POST })
-
-export const updateNewPostActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newPost: text })
-
-export const addNewDialogActionCreator = () => ({ type: ADD_NEW_DIALOG_ITEM})
-
-export const updateNewDialogActionCreator = (text) => ({ type: UPDATE_NEW_DIALOG_ITEM, newDialog: text })
-
 window.state = store.getState();
 
 export default store

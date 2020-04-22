@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './PostForm.module.css'
-import {addPostActionCreator, updateNewPostActionCreator} from '../../../../redux/state'
+import {addPostActionCreator, updateNewPostActionCreator} from '../../../../redux/profileReducer'
 
 const PostForm = ({newPostText, dispatch}) => {
   
