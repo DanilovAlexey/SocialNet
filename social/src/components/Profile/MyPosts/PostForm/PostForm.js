@@ -1,33 +1,26 @@
 import React from 'react'
 import classes from './PostForm.module.css'
-import {addPostActionCreator, updateNewPostActionCreator} from '../../../../redux/profileReducer'
+import { addPostActionCreator, updateNewPostActionCreator } from '../../../../redux/profileReducer'
 
-const PostForm = ({newPostText, dispatch}) => {
-  
+const PostForm = (props) => {
 
-  let onClickHandler = () => { 
-    dispatch(addPostActionCreator())
-  }
-  
   let onChangeHandler = (e) => {
     let text = e.target.value
     //store.updateNewPost(text)
 
-    dispatch(updateNewPostActionCreator(text))
+    props.updateNewPost(text)
   }
 
-  const onFocusHandler = () => {
-    dispatch(updateNewPostActionCreator(''))
-}
+
 
   return (
     <div className={classes.form}>
       <div>
         <label htmlFor="myPost">My Post</label>
-        <textarea id="myPost" rows="5" onChange={onChangeHandler} value={newPostText} onFocus={onFocusHandler}></textarea>
+        <textarea id="myPost" rows="5" onChange={onChangeHandler} value={props.newPostText} onFocus={props.onFocusHandler}></textarea>
       </div>
-      <div style={{textAlign:"end"}}>
-        <button onClick={onClickHandler}>Send</button>
+      <div style={{ textAlign: "end" }}>
+        <button onClick={props.addPostAction}>Send</button>
       </div>
     </div>
   )

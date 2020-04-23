@@ -5,35 +5,29 @@ import MessageItem from './MessageItem/MessageItem'
 import {addNewDialogActionCreator, updateNewDialogActionCreator} from '../../redux/dialogReducer'
 
 
-export default ({state, dispatch}) => {
+export default (props) => {
 
-    const onClickHandler = () => {        
-        dispatch(addNewDialogActionCreator())
-    }
-
+   
     const onChangeHandler = (e) => {     
         let text = e.target.value
 
-        dispatch(updateNewDialogActionCreator(text))
+        props.updateNewDialog(text)
     }
 
-    const onFocusHandler = () => {
-        dispatch(updateNewDialogActionCreator(''))
-    }
 
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                {state.dialogsData.map((item, index) => (<DialogItem name={item.name} id={item.id} key={index} />))}
+                {props.dialogsPage.dialogsData.map((item, index) => (<DialogItem name={item.name} id={item.id} key={index} />))}
             </div>
             <div className={classes.messages}>
-                {state.messagesData.map((item, index) => (<MessageItem message={item.message} id={item.id} key={index} direction={item.direction} />))}
+                {props.dialogsPage.messagesData.map((item, index) => (<MessageItem message={item.message} id={item.id} key={index} direction={item.direction} />))}
             </div>
             <div className={classes.messageForm}>
                 <label htmlFor="myPost">My Post</label>
-                <textarea id="myPost" rows="5" value={state.newPostText} onChange={onChangeHandler} onFocus={onFocusHandler}/>
+                <textarea id="myPost" rows="5" value={props.dialogsPage.newPostText} onChange={onChangeHandler} onFocus={props.onFocusHandler}/>
                 <div>
-                    <button onClick={onClickHandler}>Send</button>
+                    <button onClick={props.addNewDialog}>Send</button>
                 </div>
             </div>
         </div>

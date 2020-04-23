@@ -1,15 +1,17 @@
 import React from 'react'
-import PostForm from './PostForm/PostForm'
+import PostFormContainer from './PostForm/PostFormContainer'
 import Post from './Post/Post'
 
 
 
-const MyPosts = ({ state, dispatch }) => {
+const MyPosts = ({ store }) => {
+  let state = store.getState()
+  
   return (
     <React.Fragment>
-      <PostForm newPostText={state.newPostText} dispatch={dispatch} />
+      <PostFormContainer store={store} />
 
-      {state.postsData.map((item, index) => (<Post key={index} message={item.message} likesCount={item.likesCount} />))}
+      {state.profilePage.postsData.map((item, index) => (<Post key={index} message={item.message} likesCount={item.likesCount} />))}
     </React.Fragment>
   )
 }
