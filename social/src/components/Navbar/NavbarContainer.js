@@ -3,12 +3,14 @@ import classes from './Navbar.module.css'
 import { NavLink } from 'react-router-dom'
 import Friends from './Friends/Friends'
 import Navbar from './Navbar'
+import {connect} from 'react-redux'
 
-const NavbarContainer = ({ store }) => {
-
-  const state = store.getState()
-
-  return  <Navbar sideBar={state.sideBar} />
+let mapStateToProps = (state) => {
+  return {
+    sideBar: state.sideBar
+  }
 }
 
-export default NavbarContainer
+
+const NavBarContainer = connect(mapStateToProps, null)(Navbar)
+export default NavBarContainer;

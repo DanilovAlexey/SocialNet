@@ -3,7 +3,7 @@ import classes from './PostForm.module.css'
 import { addPostActionCreator, updateNewPostActionCreator } from '../../../../redux/profileReducer'
 
 const PostForm = (props) => {
-
+  
   let onChangeHandler = (e) => {
     let text = e.target.value
     //store.updateNewPost(text)

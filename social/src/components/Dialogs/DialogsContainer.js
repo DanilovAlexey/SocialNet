@@ -2,27 +2,29 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
-import {addNewDialogActionCreator, updateNewDialogActionCreator} from '../../redux/dialogReducer'
+import { addNewDialogActionCreator, updateNewDialogActionCreator } from '../../redux/dialogReducer'
 import Dialogs from './Dialogs'
+import { connect } from 'react-redux'
 
 
-export default ({store}) => {
-
-    let state = store.getState()
-
-    const addNewDialog = () => {        
-        store.dispatch(addNewDialogActionCreator())
-    }
-
-    const updateNewDialog = (text) => {     
-         store.dispatch(updateNewDialogActionCreator(text))
-    }
-
-    const onFocusHandler = () => {
-        store.dispatch(updateNewDialogActionCreator(''))
-    }
-
-    return (
-        <Dialogs dialogsPage={state.dialogsPage} addNewDialog={addNewDialog} updateNewDialog={updateNewDialog} onFocusHandler={onFocusHandler}/>
-    )
+let mapStateToProps = (state) => ({
+    dialogsPage: state.dialogsPage
 }
+)
+
+let mapDispatchToProps = (dispatch) => ({
+    addNewDialog: () => {
+        dispatch(addNewDialogActionCreator())
+    },
+
+    updateNewDialog: (text) => {
+        dispatch(updateNewDialogActionCreator(text))
+    },
+
+    onFocusHandler: () => {
+        dispatch(updateNewDialogActionCreator(''))
+    }
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dialogs) 
