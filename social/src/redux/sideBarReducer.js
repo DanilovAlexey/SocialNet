@@ -5,6 +5,10 @@ const initialState = {
             text: "Profile"
         },
         {
+            to: "users",
+            text: "Users"
+        },
+        {
             to: "dialogs",
             text: "Dialogs"
         },

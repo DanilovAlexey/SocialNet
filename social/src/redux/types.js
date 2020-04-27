@@ -2,3 +2,6 @@ export const ADD_POST = 'ADD_POST'
 export const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT'
 export const ADD_NEW_DIALOG_ITEM = 'ADD_NEW_DIALOG_ITEM'
 export const UPDATE_NEW_DIALOG_ITEM = 'UPDATE_NEW_DIALOG_ITEM'
+export const FOLLOW = "FOLLOW"
+export const UNFOLLOW = "UNFOLLOW"
+export const SET_USERS = "SET_USERS"
