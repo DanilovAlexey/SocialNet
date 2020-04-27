@@ -9,5 +9,9 @@ const reducers = combineReducers({
     sideBar: sideBarReducer
 })
 
-export default createStore(reducers)
+const store = createStore(reducers)
+
+window.store = store 
+
+export default store
 
