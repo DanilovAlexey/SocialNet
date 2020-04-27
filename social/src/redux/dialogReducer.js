@@ -21,24 +21,22 @@ const initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case ADD_NEW_DIALOG_ITEM: {
+        case ADD_NEW_DIALOG_ITEM:
             let newItem = {
                 message: state.newPostText,
                 id: "0",
                 direction: "from"
             }
-
-            let newState = {...state}
-            newState.messagesData = [...state.messagesData]
-            newState.messagesData.push(newItem)
-            newState.newPostText = ''
-            return newState;
-        }
-        case UPDATE_NEW_DIALOG_ITEM: {
-            let newState = {...state}
-            newState.newPostText = action.newDialog;
-            return newState;
-        }
+            return {
+                ...state,
+                messagesData: [...state.messagesData, newItem],
+                newPostText: ''
+            };
+        case UPDATE_NEW_DIALOG_ITEM:
+            return {
+                ...state,
+                newPostText: action.newDialog
+            };
         default:
             return state
 
