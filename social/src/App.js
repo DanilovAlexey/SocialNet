@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import NavbarContainer from './components/Navbar/NavbarContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Footer from './components/Footer/Footer';
@@ -16,7 +16,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         {<NavbarContainer />}
         <div className="app-wrapper-content">
           {/* <Route path="/profile" component={Profile} /> */}

@@ -16,3 +16,11 @@ header > div:nth-child(3) {
   /*margin-left: auto;*/
   grid-column: 3;
 }
+
+.loginBlock {
+
+}
+
+.loginBlock a {
+  color: white;
+}
