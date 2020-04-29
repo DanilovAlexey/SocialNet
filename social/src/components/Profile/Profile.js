@@ -4,13 +4,13 @@ import Personal from './Personal/Personal'
 import MyPosts from './MyPosts/MyPosts'
 
 
-const Profile = () => {  
+const Profile = (props) => {  
   return (
     <React.Fragment>
       <div>
         <img src="https://of-crimea.ru/plug/Peschanye-plyazhi-Kryma.jpg" />
       </div>
-      <Personal />
+      <Personal profile={props.profile} />
       <MyPosts />
     </React.Fragment>
   )
