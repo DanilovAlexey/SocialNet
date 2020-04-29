@@ -27,16 +27,14 @@ export const usersAPI = {
             .then(response => {
                 return response.data
             })
-    }
-}
-
-export const profileAPI = {
+    },
     getProfile(id) {
         return instance.get(`profile/${id}`)
         .then(response => {
             return response.data
           })
     }
+
 }
 
 export const authAPI = {
