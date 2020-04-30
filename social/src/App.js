@@ -10,6 +10,7 @@ import Settings from './components/Settings/Settings';
 import { BrowserRouter, Route } from 'react-router-dom'
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import Login from './components/Login/Login';
 
 
 function App(props) {
@@ -27,6 +28,7 @@ function App(props) {
           <Route path="/news" component={News} />
           <Route path="/music" component={Music} />
           <Route path="/settings" component={Settings} />
+          <Route path="/login" component={() => <Login />} />
           <Route path="/" exact render={() => <ProfileContainer />} />
         </div>
         <Footer />
