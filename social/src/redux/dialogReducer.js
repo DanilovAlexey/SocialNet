@@ -1,4 +1,4 @@
-import { ADD_NEW_DIALOG_ITEM, UPDATE_NEW_DIALOG_ITEM } from './types'
+import { ADD_NEW_DIALOG_ITEM } from './types'
 
 
 const initialState = {
@@ -15,27 +15,20 @@ const initialState = {
         { name: "Stifler", id: "3" },
         { name: "John", id: "4" },
         { name: "Kevin", id: "5" }
-    ],
-    newPostText: "Print message..."
+    ]
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_NEW_DIALOG_ITEM:
             let newItem = {
-                message: state.newPostText,
+                message: action.newMessageBody,
                 id: "0",
                 direction: "from"
             }
             return {
                 ...state,
-                messagesData: [...state.messagesData, newItem],
-                newPostText: ''
-            };
-        case UPDATE_NEW_DIALOG_ITEM:
-            return {
-                ...state,
-                newPostText: action.newDialog
+                messagesData: [...state.messagesData, newItem]
             };
         default:
             return state
@@ -44,6 +37,5 @@ export default (state = initialState, action) => {
 }
 
 
-export const addNewDialogActionCreator = () => ({ type: ADD_NEW_DIALOG_ITEM })
+export const addNewDialogActionCreator = (newMessageBody) => ({ type: ADD_NEW_DIALOG_ITEM, newMessageBody})
 
-export const updateNewDialogActionCreator = (text) => ({ type: UPDATE_NEW_DIALOG_ITEM, newDialog: text })

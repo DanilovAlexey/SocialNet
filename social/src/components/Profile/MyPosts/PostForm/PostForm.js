@@ -1,29 +1,33 @@
 import React from 'react'
 import classes from './PostForm.module.css'
 import { addPostActionCreator, updateNewPostActionCreator } from '../../../../redux/profileReducer'
+import { reduxForm, Field } from 'redux-form'
 
-const PostForm = (props) => {
-  
-  let onChangeHandler = (e) => {
-    let text = e.target.value
-    //store.updateNewPost(text)
-
-    props.updateNewPost(text)
-  }
-
-
+const ProfilePostForm = (props) => {
 
   return (
-    <div className={classes.form}>
+    <form onSubmit={props.handleSubmit} className={classes.form}>
       <div>
         <label htmlFor="myPost">My Post</label>
-        <textarea id="myPost" rows="5" onChange={onChangeHandler} value={props.newPostText} onFocus={props.onFocusHandler}></textarea>
+        <Field component="textarea" id="myPost" name="myPost" rows="5" />
       </div>
       <div style={{ textAlign: "end" }}>
-        <button onClick={props.addPostAction}>Send</button>
+        <button>Send</button>
       </div>
-    </div>
+    </form>
   )
 }
 
-export default PostForm
+const ProfilePostFormRedux = reduxForm({ form: "profileAddMessageForm" })(ProfilePostForm)
+
+
+export default (props) => {
+
+  let addNewPost = (values) => {
+    //alert(values.newMessageBody);
+    props.addPostAction(values.myPost)
+  }
+
+  return <ProfilePostFormRedux onSubmit={addNewPost} />
+
+}

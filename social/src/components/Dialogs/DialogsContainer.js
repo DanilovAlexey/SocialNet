@@ -2,7 +2,7 @@ import React from 'react'
 import classes from './Dialogs.module.css'
 import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
-import { addNewDialogActionCreator, updateNewDialogActionCreator } from '../../redux/dialogReducer'
+import { addNewDialogActionCreator } from '../../redux/dialogReducer'
 import Dialogs from './Dialogs'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
@@ -15,16 +15,8 @@ let mapStateToProps = (state) => ({
 )
 
 let mapDispatchToProps = (dispatch) => ({
-    addNewDialog: () => {
-        dispatch(addNewDialogActionCreator())
-    },
-
-    updateNewDialog: (text) => {
-        dispatch(updateNewDialogActionCreator(text))
-    },
-
-    onFocusHandler: () => {
-        dispatch(updateNewDialogActionCreator(''))
+    addNewDialog: (newMessageBody) => {
+        dispatch(addNewDialogActionCreator(newMessageBody))
     }
 })
 

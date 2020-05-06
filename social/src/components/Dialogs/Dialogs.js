@@ -4,14 +4,27 @@ import DialogItem from './DialogItem/DialogItem'
 import MessageItem from './MessageItem/MessageItem'
 import { addNewDialogActionCreator, updateNewDialogActionCreator } from '../../redux/dialogReducer'
 import { Redirect } from 'react-router-dom'
+import {reduxForm, Field} from 'redux-form'
+
+
+const AddMessageForm = (props) => (
+    <form onSubmit = {props.handleSubmit}>
+        <Field component="textarea" name="newMessageBody" placeholder="Enter your message" />
+        {/*<textarea id="myPost" rows="5" value={props.dialogsPage.newPostText} onChange={onChangeHandler} onFocus={props.onFocusHandler} />*/}
+        <div>
+            <button>Send</button>
+        </div>
+    </form>
+)
+
+const AddMessageFormRedux = reduxForm({form: "dialogAddMEssageForm"})(AddMessageForm)
 
 export default (props) => {
 
 
-    const onChangeHandler = (e) => {
-        let text = e.target.value
-
-        props.updateNewDialog(text)
+    let addNewMessage = (values) => {
+        //alert(values.newMessageBody);
+        props.addNewDialog(values.newMessageBody)
     }
 
 
@@ -27,10 +40,7 @@ export default (props) => {
             </div>
             <div className={classes.messageForm}>
                 <label htmlFor="myPost">My Post</label>
-                <textarea id="myPost" rows="5" value={props.dialogsPage.newPostText} onChange={onChangeHandler} onFocus={props.onFocusHandler} />
-                <div>
-                    <button onClick={props.addNewDialog}>Send</button>
-                </div>
+                <AddMessageFormRedux onSubmit={addNewMessage}/>
             </div>
         </div>
     )
