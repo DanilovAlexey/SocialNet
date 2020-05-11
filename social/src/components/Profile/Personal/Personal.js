@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './Personal.module.css'
 import Preloader from '../../common/Preloader/Preloader'
-import ProfileStatus from './ProfileStatus'
+import ProfileStatusHooks from './ProfileStatusHooks'
 
 const Personal = (props) => {
   //console.log(props)
@@ -16,7 +16,7 @@ const Personal = (props) => {
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: "20px" }}>
         <div><h2>{props.profile.fullName}</h2></div>        
-        <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+        <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus} />
         <div><p>{props.profile.aboutMe}</p></div>
         <div>
           <div><h4>Контакты</h4></div>
