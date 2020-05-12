@@ -58,7 +58,7 @@ export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export const getProfile = (userId) => async (dispatch) => {
     try {
         let response = await usersAPI.getProfile(userId)
-        dispatch(setUserProfile(response.data))
+        dispatch(setUserProfile(response))
     }
 
     catch (error) {

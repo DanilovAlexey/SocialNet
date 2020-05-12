@@ -5,6 +5,7 @@ import ProfileStatusHooks from './ProfileStatusHooks'
 
 const Personal = (props) => {
   //console.log(props)
+
   if (!props.profile) {
     return <Preloader />
   }
