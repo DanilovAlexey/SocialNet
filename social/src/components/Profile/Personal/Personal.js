@@ -2,9 +2,16 @@ import React from 'react'
 import classes from './Personal.module.css'
 import Preloader from '../../common/Preloader/Preloader'
 import ProfileStatusHooks from './ProfileStatusHooks'
+import userPhoto from '../../../assets/images/user.png'
 
 const Personal = (props) => {
   //console.log(props)
+
+  const onAvatarSelected = (e) => {
+    if (e.target.files.length) {
+      props.savePhoto(e.target.files[0])
+    }
+  }
 
   if (!props.profile) {
     return <Preloader />
@@ -13,7 +20,8 @@ const Personal = (props) => {
   return (
     <div className={classes.personal}>
       <div>
-        <img src={props.profile.photos.small} />
+        <img src={props.profile.photos.large || userPhoto} className={classes.mainPhoto}/>
+        {props.isOwner && <input type={"file"} onChange={onAvatarSelected} />}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', paddingLeft: "20px" }}>
         <div><h2>{props.profile.fullName}</h2></div>        
