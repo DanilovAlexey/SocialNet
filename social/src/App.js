@@ -8,8 +8,6 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import { BrowserRouter, Route, withRouter } from 'react-router-dom'
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer'
 import { connect } from 'react-redux'
@@ -17,6 +15,11 @@ import { compose } from 'redux';
 import Preloader from './components/common/Preloader/Preloader';
 import store from './redux/redux-store'
 import { Provider } from 'react-redux'
+import withSuspense from './components/hoc/withSuspense';
+
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
   componentDidMount() {
@@ -36,8 +39,8 @@ class App extends React.Component {
             {/* <Route path="/profile" component={Profile} /> */}
             {/* <Route path="/dialogs" component={Dialogs} /> */}
             <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-            <Route path="/dialogs" render={() => <DialogsContainer />} />
-            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/dialogs" render={withSuspense(DialogsContainer)} />
+            <Route path="/users" render={withSuspense(UsersContainer)}/>
             <Route path="/news" component={News} />
             <Route path="/music" component={Music} />
             <Route path="/settings" component={Settings} />
