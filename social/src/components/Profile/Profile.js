@@ -10,7 +10,9 @@ const Profile = (props) => {
       <div>
         <img src="https://of-crimea.ru/plug/Peschanye-plyazhi-Kryma.jpg" />
       </div>
-      <Personal profile={props.profile} status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner} savePhoto={props.savePhoto}/>
+      <Personal profile={props.profile} status={props.status}
+       updateStatus={props.updateStatus} isOwner={props.isOwner} savePhoto={props.savePhoto}
+       saveProfile={props.saveProfile}/>
       <MyPosts />
     </React.Fragment>
   )

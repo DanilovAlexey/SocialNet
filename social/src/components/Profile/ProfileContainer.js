@@ -1,7 +1,7 @@
 import React from 'react'
 import Profile from './Profile'
 import { connect } from 'react-redux'
-import { getProfile, getStatus, updateStatus, savePhoto } from '../../redux/profileReducer'
+import { getProfile, getStatus, updateStatus, savePhoto, saveProfile } from '../../redux/profileReducer'
 import * as axios from 'axios'
 import { withRouter, Redirect } from 'react-router-dom'
 import { withAuthRedirect } from '../hoc/withAuthRedirect'
@@ -57,7 +57,7 @@ let mapStateToProps = (state) => (
 )
 
 export default compose(
-  connect(mapStateToProps, { getProfile, getStatus, updateStatus, savePhoto }),
+  connect(mapStateToProps, { getProfile, getStatus, updateStatus, savePhoto, saveProfile }),
   withRouter,
   //withAuthRedirect
 )(ProfileContainer)
