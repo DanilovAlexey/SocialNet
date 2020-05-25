@@ -7,7 +7,7 @@ import Footer from './components/Footer/Footer';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import { BrowserRouter, Route, withRouter } from 'react-router-dom'
+import { BrowserRouter, Route, withRouter, Redirect } from 'react-router-dom'
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer'
 import { connect } from 'react-redux'
@@ -22,8 +22,19 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
+
+  catchAllUnhandledErrors = (promiseRejectionEvent) => {
+    alert("Some Error");
+    console.error(promiseRejectionEvent)
+  }
   componentDidMount() {
     this.props.initializeApp()
+
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
 
   render() {
@@ -45,7 +56,8 @@ class App extends React.Component {
             <Route path="/music" component={Music} />
             <Route path="/settings" component={Settings} />
             <Route path="/login" component={() => <Login />} />
-            <Route path="/" exact render={() => <ProfileContainer />} />
+            <Route path="/" exact render={() => <Redirect to={"/profile"} /> } />
+            <Route path="*" exact render={() => <div>404 not found</div>} />
           </div>
           <Footer />
         </div>

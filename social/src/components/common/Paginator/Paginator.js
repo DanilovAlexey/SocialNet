@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import classes from './Paginator.module.css'
+import cn from 'classnames'
 
 const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, portionSize=10}) => {
     let pagesCount = Math.ceil(totalItemsCount / pageSize)
@@ -16,7 +17,7 @@ const Paginator = ({totalItemsCount, pageSize, currentPage, onPageChanged, porti
     let rightPortionPageNumber = portionNumber * portionSize
     
     return (
-        <div className={classes.paginator}>
+        <div className={cn(classes.paginator)}>
             { portionNumber > 1 &&
                 <button onClick={() => {setPortionNumber(portionNumber - 1) }}>PREV</button>}
             {pages
